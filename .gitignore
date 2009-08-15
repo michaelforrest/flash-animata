@@ -1,0 +1,15 @@
+.DS_Store
+.settings
+releases
+bin/Fubuntu-debug.swf
+bin/FubuntuXMLRunner.swf
+AsUnitResults.xml
+Fubuntu-fdb.swf
+FubuntuRunner.swf
+assets/supplied
+.psd
+bin/platforms
+.as3_classpath
+bin/Fubuntu-air.swf.cache
+bin/Fubuntu-debug.swf.cache
+bin/*.swf
