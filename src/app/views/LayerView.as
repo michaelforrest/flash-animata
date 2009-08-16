@@ -19,6 +19,7 @@ package app.views {
 			 mesh = add( MeshView, layer) as MeshView;
 		}
 		addChildLayers(layer.layers);
+		
 	}
 
 	private function addChildLayers(layers : Array) :void{

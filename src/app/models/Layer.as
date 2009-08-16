@@ -25,6 +25,7 @@ package app.models {
 			anchor = findAnchor();
 			allLayers.push(this);
 		}
+		
 
 		private function  addChildLayersIfPresent( element : XML,  library : Class) : void {
 			var innerLayers : XMLList = element.layer;

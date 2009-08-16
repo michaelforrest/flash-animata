@@ -14,6 +14,7 @@ package app.models {
 			addJoints(child.joints.joint);
 			addBones(child.bones.bone);
 		}
+		
 
 		private function addBones(children : XMLList) : void {
 			bones = [];
