@@ -11,6 +11,8 @@ package app.views {
 		
 		public function AppView() {
 			super({});
+			trace("Flamniaga?");
+			trace("Flash Animata!");
 			application = App.getInstance();
 			add(SceneView, {scene:application.scene});
 		}

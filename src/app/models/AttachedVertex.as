@@ -18,7 +18,7 @@ package app.models {
 			setInitialConditions();
 		}
 
-		private function setInitialConditions() {
+		private function setInitialConditions() :void{
 			var x0 : Number = bone.j0.x;
 			var y0 : Number = bone.j0.y;
 			var x1 : Number = bone.j1.x;
@@ -51,7 +51,7 @@ package app.models {
 			ca = vd * (Math.cos(a));
 		}
 
-		private function assignAttributes( element : XML, mesh : Mesh) {
+		private function assignAttributes( element : XML, mesh : Mesh) :void{
 			vertex = mesh.vertices[element.@id];
 			d = element.@d;
 			w = element.@w;

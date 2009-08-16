@@ -23,19 +23,19 @@ package app.models {
 			this.mesh = mesh;
 			assignAttributes(element ,joints);
 			setInitialConditions();
-			if(element.getChild("attached") != null) {
-				addVertices(element.getChildren("attached/vertex"));
+			if(element.attached != null) {
+				addVertices(element.attached.vertex);
 			}
 		}
 
-		private function setInitialConditions() {
+		private function setInitialConditions() : void{
 			falloff = 1.0;
 		}
 
-		private function assignAttributes( element : XML, joints : Array) {
-			name = element.getStringAttribute("name", "");
-			j0 = joints[element.getIntAttribute("j0")];
-			j1 = joints[element.getIntAttribute("j1")];
+		private function assignAttributes( element : XML, joints : Array)  : void{
+			name = element.@name;
+			j0 = joints[element.@j0];
+			j1 = joints[element.@j1];
 			stiffness = element.@stiffness;
 			scale = element.@lm;
 			maxScale = element.@lmmax;
@@ -46,16 +46,16 @@ package app.models {
 			radius = element.@radius;
 		}
 
-		private function addVertices(children : Array) {
-			attachedVertices = new AttachedVertex[children.length];
-			for (var i : int = 0;i < children.length; i++) {
+		private function addVertices(children : XMLList) :void{
+			attachedVertices = [];
+			for (var i : int = 0;i < children.length(); i++) {
 				var element : XML = children[i];
 				var attachedVertex : AttachedVertex = new AttachedVertex(element, this,mesh);
-				attachedVertices[i] = attachedVertex;
+				attachedVertices.push( attachedVertex);
 			}
 		}
 
-		public function simulate() {
+		public function simulate() : void{
 			if (tempo > 0) {
 				time += tempo / Animata.timeDivision;	// FIXME
 				animateScale(0.5 + Math.sin(time) * 0.5);
@@ -81,11 +81,11 @@ package app.models {
 			}
 		}
 
-		private function animateScale( t : Number) {
+		private function animateScale( t : Number):void {
 			scale = minScale + ((maxScale - minScale) * t);
 		}
 
-		public function translateVertices() {
+		public function translateVertices() :void{
 			var x0 : Number = j0.x;
 			var y0 : Number = j0.y;
 			var x1 : Number = j1.x;
@@ -119,11 +119,11 @@ package app.models {
 			}
 		}
 
-		public function setTempo( value : Number) {
+		public function setTempo( value : Number) :void{
 			tempo = value;
 		}
 
-		public function setScale( value : Number) {
+		public function setScale( value : Number) :void{
 			setTempo(0);
 			value = Math.max(0,value);
 			value = Math.min(1,value);

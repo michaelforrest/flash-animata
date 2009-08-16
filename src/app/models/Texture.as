@@ -11,7 +11,7 @@ package app.models {
 		public var scale : Number;
 		public var image : Bitmap; 
 
-		public function Texture(child : XML, folder : String) {
+		public function Texture(child : XMLList, folder : String) {
 			if(child == null) return; 
 			location = folder + "/" + child.@location;
 			x = child.@x;

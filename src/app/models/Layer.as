@@ -3,7 +3,7 @@ package app.models {
 	public class Layer {
 
 		
-		public var layers = [];
+		public var layers :Array = [];
 		public var texture : Texture ;
 		public var mesh : Mesh;
 		public var  skeleton : Skeleton;
@@ -17,18 +17,18 @@ package app.models {
 		public var  rotation : Number = 0;
 		public var  anchor : Joint;
 
-		private static var allLayers = [];
+		private static var allLayers  :Array = [];
 
 		public function Layer(element : XML, folder : String) {
 			setupAttributes(element);
 			addChildLayersIfPresent(element, folder);
 			anchor = findAnchor();
-			allLayers.add(this);
+			allLayers.push(this);
 		}
 
 		private function  addChildLayersIfPresent( element : XML,  folder : String) : void {
-			var innerLayers : Array = element..layer;
-			if(innerLayers.length > 0) {
+			var innerLayers : XMLList = element.layer;
+			if(innerLayers.length() > 0) {
 				addLayers(innerLayers, folder);
 			} else {
 				setupLayerContents(element, folder);
@@ -46,15 +46,15 @@ package app.models {
 		}
 
 		private function  setupLayerContents(element : XML, folder : String ) : void {
-			texture = new Texture(element.texture, folder);
+			texture = new Texture(element.child("texture"), folder);
 			mesh = new Mesh(element.mesh);
-			var skeletonElement : XML = element.skeleton;
+			var skeletonElement : XMLList = element.skeleton;
 			if(skeletonElement == null) return;
 			skeleton = new Skeleton(skeletonElement, mesh);
 		}
 
-		public function  addLayers( children : Array,  folder : String) : void {
-			for (var i : int = 0;i < children.length; i++) {
+		public function  addLayers( children : XMLList,  folder : String) : void {
+			for (var i : int = 0;i < children.length(); i++) {
 				var element : XML = children[i];
 				addLayer(folder, element);
 			}
@@ -62,7 +62,7 @@ package app.models {
 
 		public function addLayer( folder : String,  element : XML) : Layer {
 			var layer : Layer = new Layer(element, folder);
-			layers.add(layer);
+			layers.push(layer);
 			return layer;
 		}
 
@@ -98,10 +98,10 @@ package app.models {
 
 		
 		
-		private function setRotation( value : Number) : void {
-			if(anchor == null) anchor = findAnchor();
-			rotation = value;
-		}
+//		private function setRotation( value : Number) : void {
+//			if(anchor == null) anchor = findAnchor();
+//			rotation = value;
+//		}
 
 		private  function  findAnchor() : Joint {
 			if(skeleton == null) return null;
@@ -117,9 +117,9 @@ package app.models {
 		}
 
 		
-		private function setScale(value : Number) : void {
-			scale = value;
-		}
+//		private function setScale(value : Number) : void {
+//			scale = value;
+//		}
 
 		public function  getAllBones( bones : Array) : void {
 			for (var i : int = 0;i < layers.length; i++) {
