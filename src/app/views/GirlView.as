@@ -12,10 +12,10 @@ package app.views {
 	 * http://www.senocular.com/flash/tutorials/flash10drawingapi/
 	 */
 
-	public class AppView extends ViewBase {
+	public class GirlView extends ViewBase {
 		private var texture : Bitmap;
 		
-		public function AppView() {
+		public function GirlView() {
 			super({columnWidth:500});
 			texture = new TextureLibrary.Capricious_4_by_Kinz90() as Bitmap;
 			append(texture);
