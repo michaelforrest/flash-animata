@@ -1,43 +1,37 @@
-package animata.views;
+package app.views {
+	import app.models.Face;
+	import app.models.Layer;
+	import app.models.Vertex;
 
-import processing.core.PApplet;
-import animata.ViewBase;
-import animata.model.Layer;
-import animata.model.Mesh.Face;
-import animata.model.Mesh.Vertex;
+	import com.lbi.mvc.view.ViewBase;
 
-public class MeshView extends ViewBase {
+	public class MeshView extends ViewBase {
 
-	private final Layer layer;
-	//private PFont font;
+		private var layer : Layer;
 
-	public MeshView(PApplet applet, Layer layer) {
-		super(applet);
-		//if(font == null) font = applet.loadFont("Helvetica.vlw");
-		this.layer = layer;
-	}
-	public void draw() {
-		applet.noStroke();
-		drawFaces(layer.mesh.faces);
-//		applet.textFont(font);
-//		applet.fill(0);
-//		applet.text(layer.name,0,0,100,40,1);
-	}
-	private void drawFaces(Face[] faces) {
-		for (int i = 0; i < faces.length; i++) {
-			Face face = faces[i];
-			drawFace(face.vertices);
+		//private PFont font;
+
+		public function MeshView( layer : Layer) {
+			this.layer = layer;
 		}
-	}
-	private void drawFace(Vertex[] vertices) {
-		applet.beginShape();
-		applet.texture(layer.texture.getImage(applet));
-		for (int i = 0; i < vertices.length; i++) {
-			Vertex vertex = vertices[i];
-			applet.vertex(vertex.x,vertex.y,vertex.u, vertex.v);
+
+		public function draw() :void{
+			graphics.clear();
+			drawFaces(layer.mesh.faces);
 		}
-		applet.endShape();
-	}
+
+		private function drawFaces(faces : Array) :void{
+			for (var i : int = 0; i < faces.length; i++) {
+				var face : Face = faces[i];
+				drawFace(face);
+			}
+		}
+
+		private function drawFace(face : Face) :void{
+			graphics.beginBitmapFill(layer.texture.getImage());
+			graphics.drawTriangles(face.getTriangles(),null,face.getUVCoordinates());
+			
+		}
 	/*
 	 * 	glColor3f(1.f, 1.f, 1.f);
 		glEnable(GL_TEXTURE_2D);
@@ -61,5 +55,5 @@ public class MeshView extends ViewBase {
 
 		glDisable(GL_TEXTURE_2D);
 	 */
-
+	}
 }

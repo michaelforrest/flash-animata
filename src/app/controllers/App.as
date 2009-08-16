@@ -1,4 +1,5 @@
 package app.controllers {
+	import forest.ForestLibrary;
 	import app.models.Scene;
 
 	import com.lbi.mvc.model.EventMapper;
@@ -16,7 +17,7 @@ package app.controllers {
 			return instance;
 		}
 		public function App() {
-			scene = new Scene({nmt:"forest/forest.nmt"});
+			scene = new Scene({nmt:"forest/forest.nmt", library:ForestLibrary});
 		}
 		
 	}

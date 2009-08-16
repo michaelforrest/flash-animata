@@ -1,9 +1,10 @@
 require 'activesupport'
 namespace :assets do
   
-  desc "Create boot classes"
+  desc "Create texture classes"
   task :textures do
     asset_file "textures", "TextureLibrary"
+    asset_file "forest", "ForestLibrary"
     #asset_file "boot/avatars", "Avatars"
     #asset_file "boot/icons", "BootIcons"
   end

@@ -15,12 +15,12 @@ package app.models {
 	public class Scene extends Selectable {
 		private var url : String;
 		private var loader : URLLoader;
-		private var folder : String;
-		private var layer : Layer;
+		private var library : Class;
+		public var root : Layer;
 
 		public function Scene(options : Object) {
 			url = options.nmt;
-			folder = options.folder;
+			library = options.library;
 			loadXML(url);
 		}
 		
@@ -41,7 +41,7 @@ package app.models {
 		}
 
 		private function onLoad(event : Event) : void {
-			layer = new Layer(new XML(loader.data),folder);
+			root = new Layer(new XML(loader.data),library);
 			dispatchEvent(new Event(SceneEvent.READY));
 		}
 	}

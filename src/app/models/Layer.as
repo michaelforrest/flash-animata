@@ -19,19 +19,19 @@ package app.models {
 
 		private static var allLayers  :Array = [];
 
-		public function Layer(element : XML, folder : String) {
+		public function Layer(element : XML, library : Class) {
 			setupAttributes(element);
-			addChildLayersIfPresent(element, folder);
+			addChildLayersIfPresent(element, library);
 			anchor = findAnchor();
 			allLayers.push(this);
 		}
 
-		private function  addChildLayersIfPresent( element : XML,  folder : String) : void {
+		private function  addChildLayersIfPresent( element : XML,  library : Class) : void {
 			var innerLayers : XMLList = element.layer;
 			if(innerLayers.length() > 0) {
-				addLayers(innerLayers, folder);
+				addLayers(innerLayers, library);
 			} else {
-				setupLayerContents(element, folder);
+				setupLayerContents(element, library);
 			}
 		}
 
@@ -40,28 +40,28 @@ package app.models {
 			x = element.@x;
 			y = element.@y;
 			z = -element.@z;
-			alpha = element.@alpha || 1;
-			scale = element.@scale || 1;
-			visible = element.@vis == 1;
+//			alpha = element.@alpha || 1;
+//			scale = element.@scale || 1;
+//			visible = element.@vis == 1;
 		}
 
-		private function  setupLayerContents(element : XML, folder : String ) : void {
-			texture = new Texture(element.child("texture"), folder);
+		private function  setupLayerContents(element : XML, library :Class ) : void {
+			texture = new Texture(element.child("texture"), library);
 			mesh = new Mesh(element.mesh);
 			var skeletonElement : XMLList = element.skeleton;
 			if(skeletonElement == null) return;
 			skeleton = new Skeleton(skeletonElement, mesh);
 		}
 
-		public function  addLayers( children : XMLList,  folder : String) : void {
+		public function  addLayers( children : XMLList,  library :Class) : void {
 			for (var i : int = 0;i < children.length(); i++) {
 				var element : XML = children[i];
-				addLayer(folder, element);
+				addLayer(library, element);
 			}
 		}
 
-		public function addLayer( folder : String,  element : XML) : Layer {
-			var layer : Layer = new Layer(element, folder);
+		public function addLayer( library : Class,  element : XML) : Layer {
+			var layer : Layer = new Layer(element, library);
 			layers.push(layer);
 			return layer;
 		}
