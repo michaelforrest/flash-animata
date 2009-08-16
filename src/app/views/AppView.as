@@ -1,4 +1,5 @@
 package app.views {
+	import app.controllers.KeyboardController;
 	import app.controllers.App;
 
 	import com.lbi.mvc.view.ViewBase;
@@ -15,6 +16,7 @@ package app.views {
 			trace("Flash Animata!");
 			application = App.getInstance();
 			add(SceneView, {scene:application.scene});
+			KeyboardController.init(stage);
 		}
 	}
 }
