@@ -13,6 +13,7 @@ package app.views {
 		super({});
 		this.layer = layer;
 		alpha = layer.alpha;
+		scaleX = scaleY = layer.scale;
 		doTransformation();
 		if(layer.mesh){
 			 mesh = add( MeshView, layer) as MeshView;

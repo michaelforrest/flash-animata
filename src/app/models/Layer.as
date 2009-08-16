@@ -41,7 +41,8 @@ package app.models {
 			y = element.@y;
 			z = -element.@z;
 //			alpha = element.@alpha || 1;
-//			scale = element.@scale || 1;
+			
+			scale = element.@scale > 0 ? element.@scale : scale;
 //			visible = element.@vis == 1;
 		}
 

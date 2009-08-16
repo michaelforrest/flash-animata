@@ -20,10 +20,10 @@ package app.views {
 			scene.registerEvents(this, [SceneEvent.READY]);
 		}
 		public function onReady( e : Event ) : void{
-			text("the scene loaded!");
+			x = 500;
+			y = 500;
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
 			rootView = add(LayerView, scene.root) as LayerView;
-			DraggyClip.initialize(rootView);
 		}
 		
 		private function onEnterFrame(event : Event) : void {
