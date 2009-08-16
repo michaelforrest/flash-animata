@@ -1,4 +1,6 @@
 package app.models {
+	import animata.models.Layer;
+
 	import app.helpers.events.SceneEvent;
 
 	import com.lbi.mvc.collection.Selectable;

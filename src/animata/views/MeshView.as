@@ -1,7 +1,6 @@
-package app.views {
-	import app.models.Face;
-	import app.models.Layer;
-	import app.models.Vertex;
+package animata.views {
+	import animata.models.Face;
+	import animata.models.Layer;
 
 	import com.lbi.mvc.view.ViewBase;
 

@@ -1,4 +1,4 @@
-package app.models {
+package animata.models {
 
 	public class Skeleton {
 

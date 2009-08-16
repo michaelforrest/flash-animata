@@ -1,7 +1,8 @@
 package app.models {
+	import com.lbi.mvc.model.EventMapper;
+
 	import flash.events.Event;
 
-	import com.lbi.mvc.model.EventMapper;
 	/**
 	 * Generated with Tidy Flash
 	 */

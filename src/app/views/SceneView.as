@@ -1,7 +1,9 @@
 package app.views {
-	import com.lbi.debug.DraggyClip;
-	import app.helpers.events.SceneEvent;
 	import app.models.Scene;
+
+	import animata.views.LayerView;
+
+	import app.helpers.events.SceneEvent;
 
 	import com.lbi.mvc.view.ViewBase;
 

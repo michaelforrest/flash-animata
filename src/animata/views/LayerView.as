@@ -1,5 +1,5 @@
-package app.views {
-	import app.models.Layer;
+package animata.views {
+	import animata.models.Layer;
 
 	import com.lbi.mvc.view.ViewBase;
 

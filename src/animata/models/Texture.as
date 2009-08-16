@@ -1,6 +1,4 @@
-package app.models {
-	import com.lbi.mvc.view.ViewBase;
-
+package animata.models {
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 
