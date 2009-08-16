@@ -27,7 +27,7 @@ package app.models {
 		}
 
 		private function  addChildLayersIfPresent( element : XML,  folder : String) : void {
-			var innerLayers : Array = element.getChildren("layer");
+			var innerLayers : Array = element..layer;
 			if(innerLayers.length > 0) {
 				addLayers(innerLayers, folder);
 			} else {
@@ -36,19 +36,19 @@ package app.models {
 		}
 
 		private function setupAttributes(element : XML) : void {
-			name = element.getStringAttribute("name");
-			x = element.getFloatAttribute("x");
-			y = element.getFloatAttribute("y");
-			z = -element.getFloatAttribute("z");
-			alpha = element.getFloatAttribute("alpha", 1);
-			scale = element.getFloatAttribute("scale", 1);
-			visible = element.getIntAttribute("vis") == 1;
+			name = element.@name;
+			x = element.@x;
+			y = element.@y;
+			z = -element.@z;
+			alpha = element.@alpha || 1;
+			scale = element.@scale || 1;
+			visible = element.@vis == 1;
 		}
 
 		private function  setupLayerContents(element : XML, folder : String ) : void {
-			texture = new Texture(element.getChild("texture"), folder);
-			mesh = new Mesh(element.getChild("mesh"));
-			var skeletonElement : XML = element.getChild("skeleton");
+			texture = new Texture(element.texture, folder);
+			mesh = new Mesh(element.mesh);
+			var skeletonElement : XML = element.skeleton;
 			if(skeletonElement == null) return;
 			skeleton = new Skeleton(skeletonElement, mesh);
 		}

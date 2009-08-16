@@ -13,10 +13,10 @@ package app.models {
 
 		public function Texture(child : XML, folder : String) {
 			if(child == null) return; 
-			location = folder + "/" + child.getStringAttribute("location");
-			x = child.getFloatAttribute("x");
-			y = child.getFloatAttribute("y");
-			scale = child.getFloatAttribute("scale");
+			location = folder + "/" + child.@location;
+			x = child.@x;
+			y = child.@y;
+			scale = child.@scale;
 		}
 
 		public function  getImage() : Bitmap {

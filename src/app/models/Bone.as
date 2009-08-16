@@ -29,21 +29,21 @@ package app.models {
 		}
 
 		private function setInitialConditions() {
-			falloff = 1.0f;
+			falloff = 1.0;
 		}
 
 		private function assignAttributes( element : XML, joints : Array) {
 			name = element.getStringAttribute("name", "");
 			j0 = joints[element.getIntAttribute("j0")];
 			j1 = joints[element.getIntAttribute("j1")];
-			stiffness = element.getFloatAttribute("stiffness");
-			scale = element.getFloatAttribute("lm");
-			maxScale = element.getFloatAttribute("lmmax");
-			minScale = element.getFloatAttribute("lmmin");
-			tempo = element.getFloatAttribute("tempo");
-			time = element.getFloatAttribute("time");
-			size = element.getFloatAttribute("size");
-			radius = element.getFloatAttribute("radius");
+			stiffness = element.@stiffness;
+			scale = element.@lm;
+			maxScale = element.@lmmax;
+			minScale = element.@lmmin;
+			tempo = element.@tempo;
+			time = element.@time;
+			size = element.@size;
+			radius = element.@radius;
 		}
 
 		private function addVertices(children : Array) {
@@ -58,7 +58,7 @@ package app.models {
 		public function simulate() {
 			if (tempo > 0) {
 				time += tempo / Animata.timeDivision;	// FIXME
-				animateScale(0.5f + Math.sin(time) * 0.5f);
+				animateScale(0.5 + Math.sin(time) * 0.5);
 			}
 			var dx : Number = (j1.x - j0.x);
 			var dy : Number = (j1.y - j0.y);
@@ -94,8 +94,8 @@ package app.models {
 			var dx : Number = (x1 - x0);
 			var dy : Number = (y1 - y0);
 
-			var x : Number = x0 + dx * 0.5f;
-			var y : Number = y0 + dy * 0.5f;
+			var x : Number = x0 + dx * 0.5;
+			var y : Number = y0 + dy * 0.5;
 
 			var dCurrent : Number = Math.sqrt(dx * dx + dy * dy);
 			//			if (dCurrent < FLT_EPSILON)

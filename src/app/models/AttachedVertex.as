@@ -28,14 +28,14 @@ package app.models {
 			var dx : Number = (x1 - x0);
 			var dy : Number = (y1 - y0);
 //			float dCurrent = PApplet.sqrt(dx*dx + dy*dy);
-			var x : Number = x0 + dx * 0.5f;
-			var y : Number = y0 + dy * 0.5f;
+			var x : Number = x0 + dx * 0.5;
+			var y : Number = y0 + dy * 0.5;
 
 			var vx : Number = vertex.x;
 			var vy : Number = vertex.y;
 			var vd : Number = Math.sqrt((x - vx) * (x - vx) + (y - vy) * (y - vy));
 
-			var vdnorm : Number = vd / (bone.radius * bone.size * .5f);
+			var vdnorm : Number = vd / (bone.radius * bone.size * .5);
 
 			if (vdnorm >= 1)
 			{
@@ -43,7 +43,7 @@ package app.models {
 			}
 			else
 			{
-				weight = Math.pow(1.0f - vdnorm, 1.0f / bone.falloff);
+				weight = Math.pow(1.0 - vdnorm, 1.0 / bone.falloff);
 			}
 
 			var a : Number = Math.atan2(vy - y, vx - x) - alpha;
