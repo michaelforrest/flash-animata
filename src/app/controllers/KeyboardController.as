@@ -1,4 +1,5 @@
 package app.controllers {
+	import app.helpers.events.PianoEvent;
 	import app.models.Note;
 
 	import com.lbi.mvc.model.EventMapper;
@@ -39,11 +40,13 @@ package app.controllers {
 			var note : Note = getNoteByCharCode(event.charCode);
 			if(!note) return;
 			note.play();
+			dispatchEvent(new PianoEvent(PianoEvent.NOTE_ON, note));
 		}
 		private function onKeyUp(event : KeyboardEvent) : void {
 			var note : Note = getNoteByCharCode(event.charCode);
 			if(!note) return;
 			note.stop();
+			dispatchEvent(new PianoEvent(PianoEvent.NOTE_OFF, note));
 		}
 
 		

@@ -12,7 +12,6 @@ package animata.models {
 		}
 
 		private function addVertices(children : XMLList) : void {
-			trace("adding ", children.length(),"vertices");
 			for (var i : int = 0;i < children.length(); i++) {
 				var element : XML = children[i];
 				var vertex : Vertex = new Vertex(element);

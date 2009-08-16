@@ -14,9 +14,9 @@ package app.views {
 			super({});
 			trace("Flamniaga?");
 			trace("Flash Animata!");
+			KeyboardController.init(stage);
 			application = App.getInstance();
 			add(SceneView, {scene:application.scene});
-			KeyboardController.init(stage);
 		}
 	}
 }

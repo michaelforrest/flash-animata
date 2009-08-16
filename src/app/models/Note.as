@@ -19,6 +19,15 @@ package app.models {
 				trace("error loading sound ", "note"+ index);
 			}
 		}
+		
+		public function getTriggerName() : String {
+			return "triggerpiano" + index;
+		}
+
+		public function getBoneName() : String {
+			return "piano"+  index;
+		}
+
 		public function stop() : void {
 		}
 		

@@ -1,12 +1,14 @@
 package animata.models {
+	import com.lbi.animation.animator.Animator;
 
 	/**
 	 * @author michaelforrest
 	 */
 	public class Bone {
+		
 		public var j0 : Joint;
 		public var j1 : Joint;
-		private var scale : Number;
+		public var scale : Number = 1;
 		private  var maxScale : Number;
 		private  var minScale : Number;
 		public var tempo : Number;
@@ -18,14 +20,27 @@ package animata.models {
 		public var radius : Number;
 		public var falloff : Number;
 		private var mesh : Mesh;
+		public static var allBones : Array = [];
+		public var animator : Animator;
 
 		public function Bone( element : XML, joints : Array, mesh : Mesh) {
 			this.mesh = mesh;
 			assignAttributes(element ,joints);
+			tempo = 0;
 			setInitialConditions();
 			if(element.attached != null) {
 				addVertices(element.attached.vertex);
 			}
+			animator = new Animator(this);
+			allBones.push(this);
+		}
+		
+		public function animateToTempo(v : Number) : void {
+			animator.tempo = v;
+		}
+
+		public function animateToScale(v : Number) : void {
+			animator.scale = v;
 		}
 
 		private function setInitialConditions() : void{

@@ -1,4 +1,5 @@
 package app.models {
+	import animata.models.Bone;
 	import animata.models.Layer;
 
 	import app.helpers.events.SceneEvent;
@@ -26,6 +27,15 @@ package app.models {
 			loadXML(url);
 		}
 		
+		public function findBones(name : String) : Array {
+			var result : Array = [];
+			for (var i : int = 0; i < Bone.allBones.length; i++) {
+				var bone : Bone = Bone.allBones[i];
+				if(bone.name == name) result.push(bone);
+			}
+			return result;
+		}
+
 		public function simulate() : void {
 			root.simulate();
 		}
