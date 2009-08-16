@@ -1,4 +1,5 @@
 package app.views {
+	import com.lbi.debug.DraggyClip;
 	import app.helpers.events.SceneEvent;
 	import app.models.Scene;
 
@@ -22,9 +23,11 @@ package app.views {
 			text("the scene loaded!");
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
 			rootView = add(LayerView, scene.root) as LayerView;
+			DraggyClip.initialize(rootView);
 		}
 		
 		private function onEnterFrame(event : Event) : void {
+			scene.simulate();
 			rootView.draw();	
 		} 
 	}

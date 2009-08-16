@@ -24,6 +24,10 @@ package app.models {
 			loadXML(url);
 		}
 		
+		public function simulate() : void {
+			root.simulate();
+		}
+
 		private function loadXML(url : String) : void {
 			loader = new URLLoader();
 			var xml_request : URLRequest = new URLRequest(url);

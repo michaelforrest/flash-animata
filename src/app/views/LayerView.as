@@ -14,7 +14,9 @@ package app.views {
 		this.layer = layer;
 		alpha = layer.alpha;
 		doTransformation();
-		if(layer.mesh) mesh = add( MeshView, layer) as MeshView;
+		if(layer.mesh){
+			 mesh = add( MeshView, layer) as MeshView;
+		}
 		addChildLayers(layer.layers);
 	}
 
@@ -22,15 +24,15 @@ package app.views {
 		this.layers = [];
 		for (var i : int = 0; i < layers.length; i++) {
 			var layer : Layer = layers[i];
-			add( LayerView, layer);
+			this.layers.push(add( LayerView, layer));
+			
 		}
 	}
 
 	public function draw() :void{
 		if(!layer.visible || layer.alpha == 0) return;
-
+		
 		if(mesh) {
-			trace("gonna draw a mesh")
 			mesh.draw();
 		}
 //		if(AnimataPlayback.debugging()) drawDebugStuff();

@@ -28,10 +28,7 @@ package app.models {
 			
 		}
 
-		public function  getImage() : BitmapData {
-			trace("WARNING! Loading this image won't work!");
-			//	if(image==null) image = applet.loadImage(location);
-			
+		public function getImage() : BitmapData {
 			return image;
 		}
 	}
