@@ -15,7 +15,15 @@ package animata.models {
 			addBones(child.bones.bone);
 		}
 		
+		public function hasChanged() : Boolean {
+			for (var i : int = 0; i < bones.length; i++) {
+				if((bones[i] as Bone).hasChanged()) return true;
+				
+			}
+			return false;
+		}
 
+		
 		private function addBones(children : XMLList) : void {
 			bones = [];
 			for (var i : int = 0;i < children.length(); i++) {

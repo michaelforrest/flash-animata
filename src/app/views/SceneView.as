@@ -1,4 +1,5 @@
 package app.views {
+	import flash.utils.getTimer;
 	import app.models.Scene;
 
 	import animata.views.LayerView;
@@ -27,10 +28,18 @@ package app.views {
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
 			rootView = add(LayerView, scene.root) as LayerView;
 		}
-		
+		private var time : Number = 0;
+		private var frameTime : Number=  0;
+		private var simTime : Number = 0;
+		private var drawTime : Number = 0;
 		private function onEnterFrame(event : Event) : void {
+			frameTime = getTimer() - time;
+//			time = getTimer();
 			scene.simulate();
-			rootView.draw();	
+//			simTime = getTimer() - time;
+			rootView.draw();
+//			drawTime = getTimer() - simTime - time;
+//			trace("frameTime:", frameTime, "simTime:", simTime, "drawTime:", drawTime);
 		} 
 	}
 }

@@ -25,7 +25,7 @@ package app.views {
 			KeyboardController.init(stage);
 			application = App.getInstance();
 			add(SceneView, {scene:application.scene});
-			append(text("Use middle row of keys to play strings (" + KeyboardController.KEYS.toUpperCase() + ")", "Small"));
+			append(text("Click on the tree then use the keyboard to play (needs sound).", "Small"));
 			append(new FPSView());
 			
 		}

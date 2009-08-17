@@ -12,7 +12,7 @@ package animata.views {
 	public function LayerView(layer : Layer) {
 		super({});
 		this.layer = layer;
-		alpha = layer.alpha;
+//		alpha = layer.alpha;
 		scaleX = scaleY = layer.scale;
 		doTransformation();
 		if(layer.mesh){
@@ -33,7 +33,6 @@ package animata.views {
 
 	public function draw() :void{
 		if(!layer.visible || layer.alpha == 0) return;
-		
 		if(mesh) {
 			mesh.draw();
 		}
@@ -72,8 +71,6 @@ package animata.views {
 		x = layer.x;
 		y = layer.y;
 		z = layer.z;
-
-
 	}
 
 }

@@ -8,7 +8,14 @@ package animata.models {
 		
 		public var j0 : Joint;
 		public var j1 : Joint;
-		public var scale : Number = 1;
+		private var __scale: Number = 1;
+		public function get scale():Number{
+			return __scale;
+		}
+		public function set scale(v : Number):void{
+			changed = (__scale != v);
+			__scale = v;
+		}
 		private  var maxScale : Number;
 		private  var minScale : Number;
 		public var tempo : Number;
@@ -22,6 +29,7 @@ package animata.models {
 		private var mesh : Mesh;
 		public static var allBones : Array = [];
 		public var animator : Animator;
+		private var changed : Boolean = true;
 
 		public function Bone( element : XML, joints : Array, mesh : Mesh) {
 			this.mesh = mesh;
@@ -35,6 +43,15 @@ package animata.models {
 			allBones.push(this);
 		}
 		
+		public function hasChanged() : Boolean {
+			if(tempo > 0) return true;
+			if(changed){
+				changed = false;
+				return true;
+			}
+			return false;
+		}
+
 		public function animateToTempo(v : Number) : void {
 			animator.tempo = v;
 		}

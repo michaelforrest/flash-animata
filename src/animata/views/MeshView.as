@@ -7,19 +7,25 @@ package animata.views {
 	public class MeshView extends ViewBase {
 
 		private var layer : Layer;
+		private var firstTime : Boolean = true;
 
 		//private PFont font;
 
 		public function MeshView( layer : Layer) {
 			this.layer = layer;
+			
 		}
 
 		public function draw() :void{
-			graphics.clear();
-			drawFaces(layer.mesh.faces);
+			if(firstTime || layer.hasChanged()){
+				graphics.clear();
+				drawFaces(layer.mesh.faces);
+				firstTime = false;
+			}
 		}
 
 		private function drawFaces(faces : Array) :void{
+			graphics.beginBitmapFill(layer.texture.getImage());
 			for (var i : int = 0; i < faces.length; i++) {
 				var face : Face = faces[i];
 				drawFace(face);
@@ -27,9 +33,9 @@ package animata.views {
 		}
 
 		private function drawFace(face : Face) :void{
-			graphics.beginBitmapFill(layer.texture.getImage());
 			graphics.drawTriangles(face.getTriangles(),null,face.getUVCoordinates());
-			
+//			graphics.lineStyle(1, 0xFF0000);
+//			graphics.drawTriangles(face.getTriangles());//,null,face.getUVCoordinates());
 		}
 	/*
 	 * 	glColor3f(1.f, 1.f, 1.f);

@@ -26,7 +26,12 @@ package animata.models {
 			allLayers.push(this);
 		}
 		
+		public function hasChanged() : Boolean {
+			if(!skeleton) return false;
+			return skeleton.hasChanged();
+		}
 
+		
 		private function  addChildLayersIfPresent( element : XML,  library : Class) : void {
 			var innerLayers : XMLList = element.layer;
 			if(innerLayers.length() > 0) {
