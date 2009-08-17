@@ -1,4 +1,5 @@
 package app.views {
+	import com.lbi.debug.FPSView;
 	import app.controllers.App;
 	import app.controllers.KeyboardController;
 
@@ -14,7 +15,7 @@ package app.views {
 		private var application : App;
 		
 		public function AppView() {
-			super({});
+			super({columnWidth:800});
 			trace("Flamniaga?");
 			trace("Flash Animata!");
 			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
@@ -24,6 +25,9 @@ package app.views {
 			KeyboardController.init(stage);
 			application = App.getInstance();
 			add(SceneView, {scene:application.scene});
+			append(text("Use middle row of keys to play strings (" + KeyboardController.KEYS.toUpperCase() + ")", "Small"));
+			append(new FPSView());
+			
 		}
 	}
 }

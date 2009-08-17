@@ -14,7 +14,7 @@ package app.controllers {
 
 		private static var instance : KeyboardController;
 		private static const NUM_NOTES : Number = 10;
-		private static const KEYS : String = "asdfghjkl;'";
+		public static const KEYS : String = "asdfghjkl;";
 		private var notes : Object = {};
 
 		

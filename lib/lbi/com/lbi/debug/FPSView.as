@@ -22,11 +22,9 @@ package com.lbi.debug {
 		}
 
 		private function onAddedToStage(event : Event) : void {
-			trace("made fps view");
 			var style : TypographyBase = new TypographyBase();
 			style.embed_fonts = false;
 			style.font = "_sans";
-			style.align = "right";
 			columnWidth = stage.stageWidth;
 			label = addTextField(style, new Rectangle(0,0,100,30));
 			
