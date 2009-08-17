@@ -25,7 +25,7 @@ package app.views {
 			KeyboardController.init(stage);
 			application = App.getInstance();
 			add(SceneView, {scene:application.scene});
-			append(text("Click on the tree then use the keyboard to play (needs sound).", "Small"));
+			append(text("Click on the tree then use the keyboard to play (needs sound). Will stretch to fit window", "Small"));
 			append(new FPSView());
 			
 		}
