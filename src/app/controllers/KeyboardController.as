@@ -13,8 +13,8 @@ package app.controllers {
 	public class KeyboardController extends EventMapper {
 
 		private static var instance : KeyboardController;
-		private static const NUM_NOTES : Number = 10;
-		public static const KEYS : String = "asdfghjkl;";
+		private static const NUM_NOTES : Number = 21;//22;
+		public static const KEYS : String = "asdfghjkl;zxcvbnm,.qwertyuiop";
 		private var notes : Object = {};
 
 		

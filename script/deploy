@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+scp -r bin/* root@grimaceworks.com:/srv/assets/tree/ 
