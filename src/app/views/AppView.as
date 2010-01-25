@@ -1,7 +1,7 @@
 package app.views {
-	import com.lbi.debug.FPSView;
 	import app.controllers.App;
 	import app.controllers.KeyboardController;
+	import app.models.FlashVars;
 
 	import com.lbi.mvc.view.ViewBase;
 
@@ -22,11 +22,12 @@ package app.views {
 		}
 		
 		private function onAddedToStage(event : Event) : void {
+			FlashVars.init(stage);
 			KeyboardController.init(stage);
 			application = App.getInstance();
 			add(SceneView, {scene:application.scene});
-			append(text("Click on the tree then use the keyboard to play (needs sound). Will stretch to fit window", "Small"));
-			append(new FPSView());
+	//		append(text("Click on the tree then use the keyboard to play (needs sound). Will stretch to fit window", "Small"));
+		//	append(new FPSView())dfg;
 			
 		}
 	}

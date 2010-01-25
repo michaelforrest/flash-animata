@@ -1,4 +1,5 @@
 package app.controllers {
+	import flash.display.StageDisplayState;
 	import app.helpers.events.PianoEvent;
 	import app.models.Note;
 
@@ -16,6 +17,7 @@ package app.controllers {
 		private static const NUM_NOTES : Number = 21;//22;
 		public static const KEYS : String = "asdfghjkl;zxcvbnm,.qwertyuiop";
 		private var notes : Object = {};
+		private var stage : Stage;
 
 		
 		public static function getInstance() : KeyboardController {
@@ -25,6 +27,7 @@ package app.controllers {
 		public function KeyboardController(stage : Stage) {
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+			this.stage = stage; 
 			addNotes();
 		}
 		
@@ -37,6 +40,12 @@ package app.controllers {
 		}
 
 		private function onKeyDown(event : KeyboardEvent) : void {
+			if(String.fromCharCode(event.charCode) == "1") App.setRenderMode(App.FULL);
+			if(String.fromCharCode(event.charCode) == "2") App.setRenderMode(App.CHANGING);
+			if(String.fromCharCode(event.charCode) == "3") App.setRenderMode(App.WIREFRAME);
+			
+//			if(String.fromCharCode(event.charCode) == "0") stage.displayState = StageDisplayState.FULL_SCREEN;
+			
 			var note : Note = getNoteByCharCode(event.charCode);
 			if(!note) return;
 			note.play();
@@ -51,7 +60,7 @@ package app.controllers {
 
 		
 		private function getNoteByCharCode(charCode : uint) : Note {
-			var result :Note = notes[String.fromCharCode(charCode)];
+			var result :Note = notes[String.fromCharCode(charCode).toLowerCase()];
 			
 			return result;
 		}

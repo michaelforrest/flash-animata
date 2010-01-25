@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-scp -r bin/* root@grimaceworks.com:/srv/assets/tree/ 
+#scp -r bin/* root@grimaceworks.com:/srv/assets/tree/ 
+rsync -rv --progress bin/* root@grimaceworks.com:/srv/assets/tree/

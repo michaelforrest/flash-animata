@@ -1,4 +1,5 @@
 package animata.views {
+	import app.controllers.App;
 	import animata.models.Face;
 	import animata.models.Layer;
 
@@ -16,27 +17,6 @@ package animata.views {
 			
 		}
 
-		public function draw() :void{
-			if(firstTime || layer.hasChanged()){
-				graphics.clear();
-				drawFaces(layer.mesh.faces);
-				firstTime = false;
-			}
-		}
-
-		private function drawFaces(faces : Array) :void{
-			graphics.beginBitmapFill(layer.texture.getImage());
-			for (var i : int = 0; i < faces.length; i++) {
-				var face : Face = faces[i];
-				drawFace(face);
-			}
-		}
-
-		private function drawFace(face : Face) :void{
-			graphics.drawTriangles(face.getTriangles(),null,face.getUVCoordinates());
-//			graphics.lineStyle(1, 0xFF0000);
-//			graphics.drawTriangles(face.getTriangles());//,null,face.getUVCoordinates());
-		}
 	/*
 	 * 	glColor3f(1.f, 1.f, 1.f);
 		glEnable(GL_TEXTURE_2D);

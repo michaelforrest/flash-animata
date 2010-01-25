@@ -75,7 +75,7 @@ package animata.models {
 
 		public function simulate() : void {
 			if(!visible || alpha == 0) return;
-			if(skeleton != null) skeleton.simulate(40);
+			if(skeleton != null ) skeleton.simulate(40);
 			for (var i : int = 0;i < layers.length; i++) {
 				var layer : Layer = layers[i];
 				layer.simulate();

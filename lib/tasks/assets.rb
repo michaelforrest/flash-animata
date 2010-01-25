@@ -3,7 +3,6 @@ namespace :assets do
   
   desc "Create texture classes"
   task :textures do
-    asset_file "textures", "TextureLibrary"
     asset_file "forest", "ForestLibrary"
 
     #asset_file "boot/avatars", "Avatars"
